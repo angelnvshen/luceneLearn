@@ -9,6 +9,7 @@ import org.apache.lucene.analysis.core.StopAnalyzer;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -53,5 +54,9 @@ public class AnalyzerStu {
 
         analyzer = new StopAnalyzer();
         AnalyzerStu.print(analyzer);
+
+        analyzer = new IKAnalyzer();
+        AnalyzerStu.print(analyzer);
+
     }
 }
