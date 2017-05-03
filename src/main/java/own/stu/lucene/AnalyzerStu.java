@@ -9,17 +9,25 @@ import org.apache.lucene.analysis.core.StopAnalyzer;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.wltea.analyzer.cfg.Configuration;
+import org.wltea.analyzer.cfg.DefaultConfig;
+import org.wltea.analyzer.core.IKSegmenter;
+import org.wltea.analyzer.core.Lexeme;
 import org.wltea.analyzer.lucene.IKAnalyzer;
+import own.stu.util.analyzer.MyIkAnalyzer;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dell on 2017/4/25.
  */
 public class AnalyzerStu {
 
-    private static String str = "极客学院，Lucene 案例开发";
+//    private static String str = "极客学院，Lucene 案例开发";
+    private static String str = "java是一个好语言从到2015年12月1日它已经有20年的历史了";
 
     public static void print(Analyzer analyzer) throws IOException {
         StringReader reader = new StringReader(str);
@@ -37,7 +45,7 @@ public class AnalyzerStu {
 
     public static void main(String[] args) throws IOException {
         Analyzer analyzer = null;
-        analyzer = new StandardAnalyzer();
+        /*analyzer = new StandardAnalyzer();
         AnalyzerStu.print(analyzer);
 
         analyzer = new WhitespaceAnalyzer();
@@ -53,9 +61,12 @@ public class AnalyzerStu {
         AnalyzerStu.print(analyzer);
 
         analyzer = new StopAnalyzer();
+        AnalyzerStu.print(analyzer);*/
+
+        analyzer = new MyIkAnalyzer();
         AnalyzerStu.print(analyzer);
 
-        analyzer = new IKAnalyzer();
+        analyzer = new MyIkAnalyzer(true);
         AnalyzerStu.print(analyzer);
 
     }
